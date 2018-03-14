@@ -53,6 +53,7 @@ object NetVarOffsets {
 	
 	val iWeaponID by netVar("DT_WeaponCSBase", "m_fAccuracyPenalty", 0x30)
 	
+	val nFallbackPaintKit by netVar("DT_BaseAttributableItem")
 	val nFallbackSeed by netVar("DT_BaseAttributableItem")
 	val iEntityQuality by netVar("DT_BaseAttributableItem")
 	val szCustomName by netVar("DT_BaseAttributableItem")
