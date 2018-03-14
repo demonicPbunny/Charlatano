@@ -24,7 +24,7 @@ import com.charlatano.game.Weapons
 import com.charlatano.utils.every
 object SkinChangerPlugin {
 	val engine = engineDLL.uint(dwClientState)
-	val inGame = csgoEXE.int(engine + EngineOffsets.dwInGame) == 6
+	
 
 //	val type by lazy(LazyThreadSafetyMode.NONE) { Weapons.byID(id) }
 
@@ -83,7 +83,7 @@ private fun skins() {
 
 fun skinwepindex() = every(1) {
 	for (i in 1..3) try {
-		if (inGame) continue
+		
 		val me: Player = clientDLL.uint(dwLocalPlayer)
         var currentWeaponIndex = csgoEXE.uint(me + hActiveWeapon + ((i - 1) * 0x4))
        currentWeaponIndex = currentWeaponIndex and 0xFFF
