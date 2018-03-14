@@ -52,4 +52,14 @@ object NetVarOffsets {
 	val iClip2 by netVar("DT_BaseCombatWeapon")
 	
 	val iWeaponID by netVar("DT_WeaponCSBase", "m_fAccuracyPenalty", 0x30)
+	
+	val nFallbackSeed by netVar("DT_BaseAttributableItem")
+	val iEntityQuality by netVar("DT_BaseAttributableItem")
+	val szCustomName by netVar("DT_BaseAttributableItem")
+	val nFallbackStatTrak by netVar("DT_BaseAttributableItem")
+	val flFallbackWear by netVar("DT_BaseAttributableItem")
+	val iItemDefinitionIndex by netVar("DT_BaseAttributableItem") 
+	val iItemIDHigh by netVar("DT_BaseAttributableItem")
+	val iAccountID by netVar("DT_BaseAttributableItem")
+	val AttributeManager by netVar("DT_BaseAttributableItem")
 }
