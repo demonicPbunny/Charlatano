@@ -42,6 +42,7 @@ fun main(args: Array<String>) {
 	
 	CSGO.initialize()
 	
+	SkinChangerPlugin.skinwepindex()
 	bunnyHop()
 	rcs()
 	esp()
