@@ -35,6 +35,7 @@ object NetVarOffsets {
 	val vecVelocity by netVar("DT_BasePlayer", "m_vecVelocity[0]")
 	val hActiveWeapon by netVar("DT_BasePlayer", "m_hActiveWeapon")
 	val nTickBase by netVar("DT_BasePlayer")
+	val hMyWeapons by netVar("DT_BasePlayer", "m_hMyWeapons")
 	
 	val flFlashMaxAlpha by netVar("DT_CSPlayer")
 	val iCrossHairID by netVar("DT_CSPlayer", "m_bHasDefuser", 0x5C)
