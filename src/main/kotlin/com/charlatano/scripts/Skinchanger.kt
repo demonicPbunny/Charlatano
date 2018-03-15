@@ -7,7 +7,7 @@ import com.charlatano.game.entity.Player
 import com.charlatano.utils.extensions.uint
 import com.charlatano.game.offsets.EngineOffsets.dwClientState
 import com.charlatano.game.offsets.ClientOffsets.dwLocalPlayer
-import com.charlatano.game.netvars.NetVarOffsets.hActiveWeapon
+import com.charlatano.game.netvars.NetVarOffsets.hMyWeapons
 import com.charlatano.game.netvars.NetVarOffsets.iItemDefinitionIndex
 import com.charlatano.game.netvars.NetVarOffsets.nFallbackPaintKit
 import com.charlatano.game.netvars.NetVarOffsets.iEntityQuality
@@ -85,7 +85,7 @@ fun skinwepindex() = every(1) {
 	for (i in 1..3) try {
 		
 		val me: Player = clientDLL.uint(dwLocalPlayer)
-        var currentWeaponIndex = csgoEXE.uint(me + hActiveWeapon + ((i - 1) * 0x4))
+        var currentWeaponIndex = csgoEXE.uint(me + hMyWeapons + ((i - 1) * 0x4))
        currentWeaponIndex = currentWeaponIndex and 0xFFF
 	   weaponAddress = clientDLL.int(dwEntityList + (currentWeaponIndex - 1) * 0x10)
         if (weaponAddress <= 0) continue
