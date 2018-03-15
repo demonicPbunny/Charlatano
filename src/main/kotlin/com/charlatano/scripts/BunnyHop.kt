@@ -15,25 +15,32 @@
  * You should have received a copy of the GNU Affero General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-
 package com.charlatano.scripts
 
+import com.charlatano.game.CSGO
+import com.charlatano.game.CSGO.clientDLL
 import com.charlatano.game.hooks.onGround
+import com.charlatano.game.entity.dead
+import com.charlatano.game.entity.onGround
 import com.charlatano.settings.BUNNY_HOP_KEY
 import com.charlatano.settings.ENABLE_BUNNY_HOP
+import com.charlatano.game.offsets.ClientOffsets
+import com.charlatano.game.offsets.ClientOffsets.dwForceJump
+import com.charlatano.game.offsets.ScaleFormOffsets
 import com.charlatano.utils.*
+import com.charlatano.utils.every
+import com.charlatano.utils.extensions.uint
 import org.jire.arrowhead.keyPressed
+import org.jire.arrowhead.keyReleased
 
-fun bunnyHop() = onGround {
+fun bunnyHop() = every(1) {
 	if (ENABLE_BUNNY_HOP && keyPressed(BUNNY_HOP_KEY)) {
-		randScroll()
-		Thread.sleep(8 + randLong(10))
-		randScroll()
-	}
-}
+		val me = clientDLL.uint(ClientOffsets.dwLocalPlayer)
+		me > 0 && !me.dead() && me.onGround() && !CSGO.scaleFormDLL.boolean(ScaleFormOffsets.bCursorEnabled)
+		if (me.onGround())
+		clientDLL[dwForceJump] = 5.toByte()
+		else 
+		clientDLL[dwForceJump] = 4.toByte()
 
-private fun randScroll() {
-	Thread.sleep(randLong(1, 4))
-	val amount = randInt(60) + 10
-	mouseWheel(if (randBoolean()) amount else -amount)
+	}
 }
